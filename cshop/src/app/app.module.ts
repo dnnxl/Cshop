@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { LoginComponent } from './login/login.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
       { path: 'products', component: ProductsComponent},
@@ -48,7 +50,9 @@ import { LoginComponent } from './login/login.component';
       { path: 'order-success', component: OrderSuccessComponent},
       { path: 'login', component: LoginComponent},
       { path: 'admin/products', component: AdminProductsComponent},
-      { path: 'admin/orders', component: AdminOrdersComponent}
+      { path: 'admin/orders', component: AdminOrdersComponent},
+      { path: 'my-orders', component: MyOrdersComponent}
+
     ])
   ],
   providers: [],
