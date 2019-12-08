@@ -1,15 +1,17 @@
 import { RouterModule } from '@angular/router';
-import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AngularFireDatabaseModule } from 'angularfire2/database'; 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { environment } from 'src/environments/environment';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
@@ -39,8 +41,8 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
@@ -49,10 +51,9 @@ import { LoginComponent } from './login/login.component';
       { path: 'check-out', component: CheckOutComponent},
       { path: 'order-success', component: OrderSuccessComponent},
       { path: 'login', component: LoginComponent},
-      { path: 'admin/products', component: AdminProductsComponent},
-      { path: 'admin/orders', component: AdminOrdersComponent},
-      { path: 'my-orders', component: MyOrdersComponent}
-
+      { path: 'admin-products', component: AdminProductsComponent},
+      { path: 'admin-orders', component: AdminOrdersComponent},
+      { path: 'my-orders', component: MyOrdersComponent},
     ])
   ],
   providers: [],

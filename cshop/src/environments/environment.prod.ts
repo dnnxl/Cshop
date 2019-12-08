@@ -6,6 +6,8 @@ export const environment = {
     databaseURL: "https://cshop-39242.firebaseio.com",
     projectId: "cshop-39242",
     storageBucket: "cshop-39242.appspot.com",
-    messagingSenderId: "305166936187"
+    messagingSenderId: "305166936187",
+    appId: "1:305166936187:web:50bcb2b0c4e28236671ade",
+    measurementId: "G-DJZ3KPPH4Z"
   }
 };
