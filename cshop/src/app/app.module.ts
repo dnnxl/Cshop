@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { CustomFormsModule } from 'ng2-validation';
+ 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
@@ -51,6 +52,7 @@ import { CategoryService } from './category.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     NgbModule,
+    CustomFormsModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
