@@ -1,4 +1,5 @@
-import { UserService } from './user.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
@@ -7,9 +8,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { AngularFireModule } from '@angular/fire';
-
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -54,14 +53,15 @@ import { LoginComponent } from './login/login.component';
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
       { path: 'login', component: LoginComponent},
-      { path: 'admin-products', component: AdminProductsComponent},
-      { path: 'admin-orders', component: AdminOrdersComponent},
+      { path: 'admin-products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
+      { path: 'admin-orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
       { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
     ])
   ],
   providers: [
     AuthService,
     AuthGuardService,
+    AdminAuthGuardService,
     UserService
   ],
   bootstrap: [AppComponent]
