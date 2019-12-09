@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -56,7 +57,7 @@ import { LoginComponent } from './login/login.component';
       { path: 'my-orders', component: MyOrdersComponent},
     ])
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
