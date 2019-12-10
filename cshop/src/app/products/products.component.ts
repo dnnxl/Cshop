@@ -6,15 +6,12 @@ import { ProductService } from '../services/product.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
   products$;
 
-  constructor(productService: ProductService) {
-    this.products$ = productService.getAll();
+  constructor(private productService: ProductService) {
+    this.products$ = productService.getAll().valueChanges();
+    console.log(this.products$);
    }
-
-  ngOnInit() {
-  }
-
 }

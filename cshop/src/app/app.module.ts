@@ -55,7 +55,7 @@ import { CategoryService } from './category.service';
     CustomFormsModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
+      { path: '', component: ProductsComponent},
       { path: 'products', component: ProductsComponent},
       { path: 'shopping-cart', component: ShoppingCartComponent},
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
