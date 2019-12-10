@@ -1,3 +1,4 @@
 export interface ShoppingItem {
-    quantity?: number
+    quantity?: number;
+    product;
   }

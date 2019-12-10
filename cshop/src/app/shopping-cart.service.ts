@@ -1,8 +1,10 @@
+import { ShoppingCart } from './models/shopping-cart';
 import { ShoppingItem } from './models/shopping-item';
 import { ProductService } from 'src/app/services/product.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/take';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable({
   providedIn: 'root'
