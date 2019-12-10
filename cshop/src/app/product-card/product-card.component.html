@@ -1,25 +1,12 @@
-<div *ngIf="product.title; else elseBlock " class="card">
-  <img [src]="product.imagenUrl" class="card-img-top"
-    alt="{{product.title}}">
+<div class="card">
+  <img [src]="product.payload.val().imagenUrl" class="card-img-top" alt="{{product.payload.val().title}}">
   <div class="card-body">
-    <h5 class="card-title">{{product.title}}</h5>
-    <p class="card-text">{{ product.price | currency:'USD': true}}</p>
+    <h5 class="card-title">{{product.payload.val().title}}</h5>
+    <p class="card-text">{{ product.payload.val().price | currency:'USD': true}}</p>
   </div>
   <div class="card-footer">
-    <a *ngIf="showActions" href="#" class="btn btn-primary btn-block">Add to Cart</a>
+    <button *ngIf="showActions"
+    (click)="addToCart(product)"
+    class="btn btn-primary btn-block">Add to Cart</button>
   </div>
 </div>
-
-<ng-template #elseBlock>
-  <div class="card">
-    <img [src]="product.payload.val().imagenUrl" class="card-img-top"
-      alt="{{product.payload.val().title}}">
-    <div class="card-body">
-      <h5 class="card-title">{{product.payload.val().title}}</h5>
-      <p class="card-text">{{ product.payload.val().price | currency:'USD': true}}</p>
-    </div>
-    <div class="card-footer">
-      <a *ngIf="showActions" href="#" class="btn btn-primary btn-block">Add to Cart</a>
-    </div>
-  </div>
-</ng-template>
