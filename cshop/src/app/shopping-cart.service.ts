@@ -37,6 +37,16 @@ export class ShoppingCartService {
   }
 
   async addToCart(product) {
+    this.updateItemQuantity(product, 1);
+  }
+
+
+  async removeFromCart(product){
+    this.updateItemQuantity(product, -1);
+
+  }
+
+  private async updateItemQuantity(product, change: number){
     let cartId = await this.getOrCreateCart();
     let items$ = this.getItem(cartId,product.key); 
     items$.valueChanges().take(1).subscribe( (item:any) => {
@@ -47,7 +57,7 @@ export class ShoppingCartService {
                               category: product.payload.val().category}, quantity:  1});
         console.log('adding new product to cart');
       }else{
-        items$.update({quantity: item.quantity + 1});
+        items$.update({quantity: item.quantity + change});
         console.log('updating exisiting product ');
       }
     });
