@@ -1,54 +1,15 @@
-
 <div class="row">
   <div class="col-3">
-    <ul class="list-group">
-      <a class="list-group-item list-group-item-action"
-      [class.active]="!category"
-      routerLink="/">
-        All categories
-      </a>
-
-
-      <a *ngFor="let c of categories$ | async" 
-      routerLink="/"
-      [queryParams]="{ category: c.name}"
-      class="list-group-item list-group-item-action"
-      [class.active]="category === c.name"
-      >
-        {{ c.name }}
-    </a>
-    </ul>
-
+    <product-filter [category]="category"></product-filter>
   </div>
-
   <div class="col">
-
-
-      <div class="row">
-          <ng-container *ngFor='let p of filteredProducts; let i = index'>
-              <div class="col">
-                <div class="card" style="width: 15rem;">
-                    <img [src]="p.payload.val().imagenUrl" class="card-img-top" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">{{p.payload.val().title}}</h5>
-                      <p class="card-text">{{ p.payload.val().price | currency:'USD': true}}</p>
-                      <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                  </div>
-              </div>
-            <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
-          </ng-container>
+    <div class="row">
+      <ng-container *ngFor='let p of filteredProducts; let i = index'>
+        <div class="col">
+          <product-card [product]="p"></product-card>
         </div>
-        
-
-
+        <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+      </ng-container>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
