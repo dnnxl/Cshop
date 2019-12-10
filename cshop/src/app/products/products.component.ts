@@ -1,3 +1,4 @@
+import { CategoryService } from './../category.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 
@@ -9,9 +10,10 @@ import { ProductService } from '../services/product.service';
 export class ProductsComponent {
 
   products$;
+  categories$;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, categoryService: CategoryService) {
     this.products$ = productService.getAll().valueChanges();
-    console.log(this.products$);
+    this.categories$ = categoryService.getCategories();
    }
 }
