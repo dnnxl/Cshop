@@ -2,14 +2,21 @@
 <div class="row">
   <div class="col-3">
     <ul class="list-group">
-      <li *ngFor="let c of categories$ | async" 
+      <a class="list-group-item list-group-item-action"
+      [class.active]="!category"
+      routerLink="/">
+        All categories
+      </a>
+
+
+      <a *ngFor="let c of categories$ | async" 
       routerLink="/"
       [queryParams]="{ category: c.name}"
       class="list-group-item list-group-item-action"
       [class.active]="category === c.name"
       >
         {{ c.name }}
-      </li>
+    </a>
     </ul>
 
   </div>
