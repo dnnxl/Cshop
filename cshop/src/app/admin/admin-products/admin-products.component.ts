@@ -10,15 +10,20 @@ import { Product } from 'src/app/models/product';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
 
-  products; // Product[]
+  products;
   filteresdProducts;
   subscription: Subscription;
 
   constructor(private productService: ProductService) {
-  this.subscription =  this.productService.getAll().snapshotChanges().subscribe(products => this.filteresdProducts = this.products = products);
-    
-    console.log("Productos");
-    console.log(this.filteresdProducts);
+  this.subscription =  this.productService.getAll().snapshotChanges().subscribe(products => this.filteresdProducts =this.products= products);
+  /*for (let entry of this.filteresdProducts) {
+    var tmp : Product = {title: entry.payload.val().title, price: entry.payload.val().price,
+    category: entry.payload.val().category, imageUrl:entry.payload.val().imageUrl};
+    this.products.push(tmp);
+    console.log("Tmp");
+
+    console.log(tmp);
+  }*/
    }
 
   ngOnInit() {
