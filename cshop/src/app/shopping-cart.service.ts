@@ -1,15 +1,16 @@
 import { ShoppingCart } from './models/shopping-cart';
-import { ShoppingItem } from './models/shopping-item';
-import { ProductService } from 'src/app/services/product.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/take';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'; 
+import { Product } from './models/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
+
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -20,10 +21,13 @@ export class ShoppingCartService {
 
   }
 
-  async getCart() {
+  async getCart(): Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCart();
-    return this.db.object('/shopping-cart/' + cartId);
+    console.log(cartId);
+    return this.db.object('/shopping-cart/' + cartId).valueChanges()
+      .map((x:any) => new ShoppingCart(x.items) );
   }
+
 
   private async getOrCreateCart(): Promise<string> {
     let cartId = localStorage.getItem('cartId');
@@ -39,29 +43,41 @@ export class ShoppingCartService {
   }
 
   async addToCart(product) {
-    this.updateItemQuantity(product, 1);
+    this.updateItem(product, 1);
   }
 
 
   async removeFromCart(product){
-    this.updateItemQuantity(product, -1);
+    this.updateItem(product, -1);
 
   }
 
-  private async updateItemQuantity(product, change: number){
+
+
+
+
+  private async updateItem(product: Product, change: number){
     let cartId = await this.getOrCreateCart();
-    let items$ = this.getItem(cartId,product.key); 
+    let items$ = this.getItem(cartId,product.$key); 
     items$.valueChanges().take(1).subscribe( (item:any) => {
       if( item === null ) {
-        items$.update({product: {title: product.payload.val().title,
-                              price: product.payload.val().price,
-                              imagenUrl: product.payload.val().imagenUrl,
-                              category: product.payload.val().category}, quantity:  1});
+        console.log(product.imagenUrl);
+
+        items$.update({title: product.title,
+                       price: product.price,
+                       imagenUrl: product.imagenUrl,
+                       category: product.category, 
+                       quantity:  1});
         console.log('adding new product to cart');
       }else{
         items$.update({quantity: item.quantity + change});
         console.log('updating exisiting product ');
       }
     });
+  }
+
+  async clearCart() {
+    let cartId = await this.getOrCreateCart();
+    this.db.object('/shopping-cart/'+cartId+'/items').remove();
   }
 }
