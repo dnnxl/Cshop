@@ -7,13 +7,16 @@ export class ShoppingCart{
     public imagenUrl;
     public category;
     public price;
+    public total;
     constructor(pTitle, pQuantity, pImage, pCategory, pPrice){
         this.title = pTitle;
         this.quantity = pQuantity;
         this.imagenUrl = pImage;
         this.category = pCategory;
         this.price = pPrice;
+        this.total = this.price*this.quantity;
     }
 
+    
     
 }
