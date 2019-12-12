@@ -1,9 +1,9 @@
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { ShoppingCartService } from './shopping-cart.service';
-import { getObservableFromList } from "./extensions/firebase-extensions";
+import { getObservableFromList } from "../../extensions/firebase-extensions";
 import { Observable } from 'rxjs/Observable';
-import { Order } from './models/order';
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root'
