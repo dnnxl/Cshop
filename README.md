@@ -1,5 +1,5 @@
 # Cshop
-E commerce application using Angular
+E commerce application using Angular, this application was made following the Mosh course of Angular and is updated to the new versions of angular and firebase libraries.
 
 ## Framework
 Angular
