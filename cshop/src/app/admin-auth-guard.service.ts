@@ -1,9 +1,11 @@
-import { UserService } from './user.service';
-import { AuthService } from './auth.service';
+import 'rxjs/add/operator/switchMap';
+
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
+
+import { AuthService } from './shared/services/auth.service';
+import { UserService } from './shared/services/user.service';
 
 @Injectable({
   providedIn: 'root'
