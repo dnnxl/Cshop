@@ -1,6 +1,8 @@
 import { OrderService } from './../order.service';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Order } from '../models/order';
 
 @Component({
   selector: 'app-my-orders',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-orders.component.css']
 })
 export class MyOrdersComponent {
-  orders$;
+  orders$: Observable<Order[]>;
   
   constructor(
     private authService: AuthService,
