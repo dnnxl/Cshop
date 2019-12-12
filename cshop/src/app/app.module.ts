@@ -36,8 +36,6 @@ import { ShoppingModule } from './shopping/shopping.module';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     NgbModule,
-    CustomFormsModule,
-    FormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductsComponent},
       { path: 'login', component: LoginComponent},

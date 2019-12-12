@@ -1,3 +1,5 @@
+import { CustomFormsModule } from 'ng2-validation';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -17,11 +19,15 @@ import { UserService } from './services/user.service';
     ProductQuantityComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    CustomFormsModule
   ],
   exports: [
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    FormsModule,
+    CustomFormsModule
   ],
   providers: [
     AuthService,

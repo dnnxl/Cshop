@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body { padding-top: 80px;}
+
+.navbar-light .navbar-brand {
+    color: purple;
+}
+
+.list-group-item.active{
+    z-index: 2;
+    color: #fff;
+    background-color: purple;
+    border-color: #007bff;
+}
