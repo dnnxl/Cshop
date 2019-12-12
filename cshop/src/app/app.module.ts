@@ -31,15 +31,11 @@ import { ShoppingModule } from './shopping/shopping.module';
     AdminModule,
     ShoppingModule,
     CoreModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    NgbModule,
     RouterModule.forRoot([
-      { path: '', component: ProductsComponent},
-      { path: 'login', component: LoginComponent},
-    ])
+      { path: '', component: ProductsComponent },
+      { path: 'login', component: LoginComponent },
+    ])  
   ],
   providers: [
     AdminAuthGuardService,
