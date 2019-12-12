@@ -1,4 +1,3 @@
-import { ShoppingModule } from './shopping/shopping.module';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -14,18 +13,16 @@ import { AdminModule } from './admin/admin.module';
 import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './core/components/login/login.component';
+import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shopping/components/products/products.component';
+import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BsNavbarComponent,
-    HomeComponent,
-    LoginComponent,
+
 
   ],
   imports: [
@@ -33,6 +30,7 @@ import { ProductsComponent } from './shopping/components/products/products.compo
     SharedModule,
     AdminModule,
     ShoppingModule,
+    CoreModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
